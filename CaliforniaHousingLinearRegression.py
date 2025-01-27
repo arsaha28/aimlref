@@ -40,3 +40,5 @@ plt.xlabel('Actual MEDV')
 plt.ylabel('predicted MEDV')
 plt.grid()
 plt.show()
+
+#incomplete ,solve this for california housing
