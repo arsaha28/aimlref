@@ -16,6 +16,8 @@ purchaseData = pd.read_csv('Purchase_Logistic.csv')
 X = purchaseData.iloc[:, [2, 3]].values
 Y = purchaseData.iloc[:, 4].values
 
+print(X.size)
+print(Y.size)
 scaler = StandardScaler()
 X = scaler.fit_transform(X)
 
@@ -24,10 +26,10 @@ logr = LogisticRegression(random_state=0)
 logr.fit(Xtrain,Ytrain)
 Ypred = logr.predict(Xtest)
 
-cmat =confusion_matrix(Ytest,Ypred)
+cmat = confusion_matrix(Ytest,Ypred)
 
 plt.figure(1)
-plt.scatter(X[:0],X[:1],c=Y)
+plt.scatter(X[:,0],X[:,1],c=Y)
 plt.suptitle('Purchased Data')
 plt.xlabel('Scaled Age')
 plt.ylabel('Scaled Income')
