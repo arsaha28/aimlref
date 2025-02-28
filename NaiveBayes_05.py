@@ -14,6 +14,7 @@ Y = purchaseData.iloc[:, 4].values
 scaler = StandardScaler()
 X = scaler.fit_transform(X)
 
+
 Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, Y, test_size=0.20, random_state=7)
 
 cf = GaussianNB()
@@ -22,3 +23,23 @@ Ypred = cf.predict(Xtest)
 
 NBscore = accuracy_score(Ypred,Ytest)
 print('Accuracy score of Naive Bayes classifier is: ',100*NBscore,'%\n')
+
+plt.figure(1)
+plt.scatter(X[:,0],X[:,1],c=Y)
+plt.suptitle('Purchase Data')
+plt.xlabel('Scaled Age')
+plt.ylabel('Scaled Income')
+plt.grid(1,which='both')
+plt.axis('tight')
+plt.show()
+
+col = cf.predict(X)
+
+plt.figure(2)
+plt.scatter(X[:,0],X[:,1],c=col)
+plt.suptitle('Naive Bayes Purchase Data')
+plt.xlabel('Scaled Age')
+plt.ylabel('Scaled Income')
+plt.grid(1,which='both')
+plt.axis('tight')
+plt.show()
